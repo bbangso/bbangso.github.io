@@ -5,7 +5,7 @@
 		{% for pg in site.data.plist %}
 		    <li class="transition">
 			{% assign t_link = pg.link | split:'/' %}
-		        <a href="{{ pg.link | prepend: site.baseurl }}/" {% if current[1] == t_link[1] %} class="active" {% endif %}>{{pg.name}}</a>
+		        <a href="{{ pg.link | prepend: site.baseurl }}" {% if current[1] == t_link[1] %} class="active" {% endif %}>{{pg.name}}</a>
 		    </li>
 		{% endfor %}
 		
