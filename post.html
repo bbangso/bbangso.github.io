@@ -1,0 +1,38 @@
+---
+layout: main-page
+title: "Post"
+description: "주제별 포스트를 볼 수 있습니다."
+---
+
+<div class="tags-expo loading-animation">
+  <div class="tags-expo-list">
+    {% for tag in site.categories %}
+    {% assign t = tag[0] | split: '-' %}
+    {% if t[0] != "post"%}
+      {% continue %}
+    {% endif %}
+    <a href="#{{ tag[0] | slugify }}" class="post-tag">{{ t[1] }}</a>
+    {% endfor %}
+    <br/><br/>
+  </div>
+
+  <div class="tags-expo-section">
+    {% for tag in site.categories %}
+    {% assign t = tag[0] | split: '-' %}
+    {% if t[0] != "post"%}
+      {% continue %}
+    {% endif %}
+    <h2 id="{{ tag[0] | slugify }}">{{ t[1] }}</h2>
+    <ul class="tags-expo-posts">
+      {% for post in tag[1] %}
+        <h4><a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
+      <li>
+        {{ post.title }}
+      <small class="post-date">{{ post.date | date_to_string }}</small>
+      </li>
+      </a></h4>
+      {% endfor %}
+    </ul><br>
+    {% endfor %}
+  </div>
+</div>
